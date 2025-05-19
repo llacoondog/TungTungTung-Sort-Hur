@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>물건 분류 게임</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-area"  tabindex="-1">
+            <div id="player">
+                <img src="tung_up.png" alt="플레이어">
+                <img id="swing-effect" src="" alt="스윙 이펙트">
+            </div>
+            <div id="item-queue">
+                <div class="queued-item" id="item-0"><img src="" alt=""></div>
+                <div class="queued-item" id="item-1"><img src="" alt=""></div>
+                <div class="queued-item" id="item-2"><img src="" alt=""></div>
+            </div>
+        </div>
+        <div id="ui">
+            <div id="score">점수: 0</div>
+        </div>
+        <div id="game-over-ui" class="hidden">
+            <h2>Game Over</h2>
+            <p>당신의 최종 점수는 <span id="final-score">0</span>점 입니다.</p>
+            <button id="restart-button">다시 시작</button>
+        </div>
+        <div id="health-display"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

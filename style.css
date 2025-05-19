@@ -1,0 +1,140 @@
+#game-container {
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;
+    border: 1px solid #000;
+    overflow: hidden;
+    position: relative;
+}
+
+#game-area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* 기존 #player 스타일 유지 */
+#player {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 흔들림 애니메이션 정의 */
+@keyframes shake {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(calc(-50% - 10px)) rotate(-5deg); }
+    50% { transform: translateX(-50%) rotate(5deg); }
+    75% { transform: translateX(calc(-50% + 10px)) rotate(-5deg); }
+    100% { transform: translateX(-50%) rotate(0deg); }
+}
+
+/* 흔들림 애니메이션이 적용될 클래스 */
+.shake-animation {
+    animation: shake 0.2s ease-in-out; /* 0.2초 동안 ease-in-out 속도로 재생 */
+}
+
+#player img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#swing-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* 초기 투명도를 1로 설정하여 즉시 보이게 함 */
+    transition: opacity 0.2s ease-out; /* 페이드 아웃 효과 */
+}
+
+#item-queue {
+    position: absolute;
+    left: 50%;
+    bottom: 200px; /* 플레이어 위치 변경에 따라 조정 (기존 150px + 50px) */
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column-reverse; /* 아래에서 위로 */
+    align-items: center;
+}
+
+.queued-item {
+    width: 60px; /* 기존 30px의 2배 */
+    height: 60px; /* 기존 30px의 2배 */
+    border-radius: 5px;
+    margin: 20px 0; /* 간격도 적절히 늘림 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.queued-item img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.queued-item.active {
+    border: 8px solid yellow; /* 활성 테두리도 키움 */
+}
+
+.animated-item {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    opacity: 1;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out; /* 지속 시간 0.2초 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center;
+}
+
+.animated-item img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#game-over-ui {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 10; /* 다른 요소 위에 표시 */
+}
+
+#game-over-ui h2 {
+    margin-top: 0;
+}
+
+#game-over-ui button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+#health-display {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    color: black;
+    white-space: nowrap; /* 좌우 클램핑 방지 */
+}
